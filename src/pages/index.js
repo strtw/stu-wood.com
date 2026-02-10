@@ -114,10 +114,10 @@ matchSearchToIndex = (results) =>{
       <div className="App">
         <SEO></SEO>
          <div className="social-icons">
-          <span className='icon'><a href="mailto:hello@stu-wood.com" aria-label="Email"><FontAwesomeIcon icon="envelope" size='2x' color="white"></FontAwesomeIcon></a></span>
-          <span className='icon'><a href="https://github.com/strtw" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={['fab','github']} size="2x" color="white"></FontAwesomeIcon></a></span>
-          <span className='icon'><a href="https://www.linkedin.com/in/stu-wood/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={['fab','linkedin']} size="2x" color="white"></FontAwesomeIcon></a></span>
-          <span className='icon'><a href="https://twitter.com/Stuart_Wood" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FontAwesomeIcon icon={['fab','twitter']}size="2x" color="white"></FontAwesomeIcon></a></span>
+          <span className='icon'><a href="mailto:hello@stu-wood.com" aria-label="Email"><FontAwesomeIcon icon="envelope" size='2x' color="white" /></a></span>
+          <span className='icon'><a href="https://github.com/strtw" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={['fab','github']} size="2x" color="white" /></a></span>
+          <span className='icon'><a href="https://www.linkedin.com/in/stu-wood/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={['fab','linkedin']} size="2x" color="white" /></a></span>
+          <span className='icon'><a href="https://twitter.com/Stuart_Wood" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FontAwesomeIcon icon={['fab','twitter']} size="2x" color="white" /></a></span>
         </div>
         <div className="cover">
         <StyledBackgroundSection/>

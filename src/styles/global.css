@@ -23,12 +23,19 @@ body {
   text-align:center;
 }
 
-header{
-   position: absolute;
-    margin: auto;
-    width: 100%;
-    top: 60px;
-    font-size: 1.6em;
+.cover {
+  position: relative;
+  min-height: 500px;
+}
+
+.cover header {
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+  top: 60px;
+  font-size: 1.6em;
 }
 
 code {
@@ -47,18 +54,18 @@ code {
 
 .main-title,h6{
   font-size:3em;
-  color:#ffffff;
+  color: #ffffff;
   -webkit-text-stroke: 1px black;
   margin:10px;
 }
 
-header h2{
-  color:#ffffff;
+.cover header h2{
+  color: #ffffff;
 }
 
 .cover p {
-  color:#ffffff;
-  font-size:1.2em;
+  color: #ffffff;
+  font-size: 1.2em;
   -webkit-text-stroke: 1px black;
 }
 
