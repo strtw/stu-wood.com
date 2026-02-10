@@ -2,11 +2,21 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 
-const SEO = ({ title, description, image, article }) => {
+const DEFAULT_METADATA = {
+  defaultTitle: "Stu Wood - Front-end Engineer | San Diego, CA",
+  titleTemplate: "%s | Stu Wood",
+  defaultDescription:
+    "I design and build modern web applications using React.js, and am an experienced marketing & digital analytics developer",
+  siteUrl: "https://www.stu-wood.com",
+  defaultImage: "/preview-image.png",
+  twitterUsername: "@stuart_wood",
+}
+
+const SEOInner = ({ title, description, image, article, siteMetadata }) => {
   const { pathname } = useLocation()
-  const { site } = useStaticQuery(query)
+  const metadata = siteMetadata || DEFAULT_METADATA
 
   const {
     defaultTitle,
@@ -15,13 +25,13 @@ const SEO = ({ title, description, image, article }) => {
     siteUrl,
     defaultImage,
     twitterUsername,
-  } = site.siteMetadata
+  } = metadata
 
   const seo = {
     title: title || defaultTitle,
     description: description || defaultDescription,
-    image: `${siteUrl}${image || defaultImage}`,
-    url: `${siteUrl}${pathname}`,
+    image: siteUrl ? `${siteUrl}${image || defaultImage}` : (image || defaultImage),
+    url: siteUrl ? `${siteUrl}${pathname}` : pathname,
   }
 
   return (
@@ -58,6 +68,31 @@ const SEO = ({ title, description, image, article }) => {
   )
 }
 
+const SEO = (props) => (
+  <StaticQuery
+    query={graphql`
+      query StuWoodSEOMetadata {
+        site {
+          siteMetadata {
+            defaultTitle: title
+            titleTemplate
+            defaultDescription: description
+            siteUrl
+            defaultImage: image
+            twitterUsername
+          }
+        }
+      }
+    `}
+    render={(data) => (
+      <SEOInner
+        {...props}
+        siteMetadata={data?.site?.siteMetadata}
+      />
+    )}
+  />
+)
+
 export default SEO
 
 SEO.propTypes = {
@@ -73,17 +108,3 @@ SEO.defaultProps = {
   image: null,
   article: false,
 }
-
-const query = graphql`
-  query SEO {
-    site {
-      siteMetadata {
-        defaultTitle: title
-        defaultDescription: description
-        siteUrl: url
-        defaultImage: image
-        twitterUsername
-      }
-    }
-  }
-`

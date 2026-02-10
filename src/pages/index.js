@@ -7,7 +7,6 @@
 import React, {Component} from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from "@fortawesome/fontawesome-svg-core";
-//import logo from './logo.svg';
 import '../styles/global.css';
 import '../components/CodePenCard.js';
 import summaryData from '../summaryData'
@@ -15,18 +14,15 @@ import CodePenCard from '../components/CodePenCard.js';
 import { graphql } from "gatsby"
 import TextSummary from '../components/TextSummary.js';
 import Searchbar from '../components/SearchBar.js';
-import { tsIndexSignature, exportDefaultSpecifier } from '@babel/types';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
-import StyledBackgroundSection from '../components/BackGroundImage'
+import StyledBackgroundSection from '../components/BackGroundImage';
 import SEO from "../components/seo";
 
-// Prevent fontawesome from dynamically adding its css since we did it manually above
 config.autoAddCss = false;
-
-library.add(fab, faEnvelope)
+library.add(fab, faEnvelope);
 
 
 const data = {
@@ -148,10 +144,9 @@ matchSearchToIndex = (results) =>{
         </div>
         <div className="about">
           <h1>About</h1>
-              <p>I'm a San Diego, CA based front-end engineer who has been designing/developing professionally for 3+ years. I have 7+ years experience in Digital Analytics and Marketing Tech in various roles including implementation, marketing, client services, and business development. Current competencies include React.js, responsive user interface component design, data visualization, and Vanilla JS SDKs. I value code-as-communication and strive to write well-documented, maintainable programs. I enjoy learning deeply and broadly, and strive to be 'T-shaped' in my knowledge.</p>
-
-              <p>I love being a developer because I have the privilege of spending my working hours creatively solving problems, learning, and engaging with really smart people. </p>
-              <p><a href="https://photos.app.goo.gl/xYUR2Q1pQcVMKPYH8" target="blank">In my free time</a> I enjoy international travel, surfing, gardening, cooking, and trying out new restaurants/breweries. I also dabble in performing at open mics.</p>
+              <p>I'm a San Diego, CA based front-end engineer who has been designing & developing professionally since 2016. I have a further 10+ years experience in digital marketing, technical client services, sales and business development. I excel in cross-functional environments where communication, continuous learning, taking initiative, and transparency are valued. </p>
+              <p>Feel free to contact me regarding opportunities, career advice, or just to connect.</p>
+              <p><a href="https://photos.app.goo.gl/xYUR2Q1pQcVMKPYH8" target="blank">To get a feel for me on personal level, here's a photo of me in a cow costume</a> I also enjoy international travel, surfing, gardening, cooking, and trying out new restaurants/breweries.</p>
         </div>
        
 
