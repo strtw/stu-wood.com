@@ -27,7 +27,7 @@ class SearchBar extends Component {
     render(){
         return(
             <div className="search">
-                <input className="search-bar" type='text' value={this.state.inputValue} onKeyDown={evt => this.handleKeyPress(evt)} onChange={evt => this.handleKeyPress(evt)}></input><span id="search-bar-search" className='search-button' onClick={evt => this.handleClick(evt)}>Search</span>
+                <input className="search-bar" type='text' value={this.state.inputValue} onKeyDown={evt => this.handleKeyPress(evt)} onChange={evt => this.handleKeyPress(evt)} aria-label="Search projects" /><span id="search-bar-search" className='search-button' role="button" tabIndex={0} onClick={evt => this.handleClick(evt)} onKeyDown={evt => { if (evt.key === 'Enter' || evt.key === ' ') { evt.preventDefault(); this.handleClick(evt); } }}>Search</span>
             </div>
         )
 }

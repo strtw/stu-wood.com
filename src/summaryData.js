@@ -1,4 +1,3 @@
-import { yieldExpression } from "@babel/types";
 //add bash scripting projects
 const summaryData = {data:[
   {

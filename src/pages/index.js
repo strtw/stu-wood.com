@@ -8,10 +8,7 @@ import React, {Component} from 'react';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from "@fortawesome/fontawesome-svg-core";
 import '../styles/global.css';
-import '../components/CodePenCard.js';
 import summaryData from '../summaryData'
-import CodePenCard from '../components/CodePenCard.js';
-import { graphql } from "gatsby"
 import TextSummary from '../components/TextSummary.js';
 import Searchbar from '../components/SearchBar.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,20 +16,11 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import StyledBackgroundSection from '../components/BackGroundImage';
-import SEO from "../components/seo";
+import SEO from "../components/SEO";
+import elasticlunr from '../elasticlunr.js';
 
 config.autoAddCss = false;
 library.add(fab, faEnvelope);
-
-
-const data = {
-  height:200,
-  width:400,
-  titles:"KEoLaV",
-  penUrl:"//codepen.io/stw/embed/KEoLaV/?height=228&theme-id=0&default-tab=html,result"
-}
-
-
 
 class App extends Component{
 
@@ -56,7 +44,7 @@ searchResultsObj = (index,query) => {
 
 
 loadProjectToSearchIndex = (data) =>{
-    var index = window.elasticlunr(function () {
+    var index = elasticlunr(function () {
       this.addField('title');
       this.addField('summary');
       this.addField('tags');
@@ -101,7 +89,7 @@ matchSearchToIndex = (results) =>{
     let summaryComponents = this.state.summaryData.data.map(project=> {
     if(this.state.searchQuery !== "" && matchedProjectIDS){
       for(let id of matchedProjectIDS){
-        if(id == project.id){
+        if(id === project.id){
           projectMatch = true;
           break;
          }else{
@@ -126,10 +114,10 @@ matchSearchToIndex = (results) =>{
       <div className="App">
         <SEO></SEO>
          <div className="social-icons">
-          <span className='icon'><a href="mailto:hello@stu-wood.com"><FontAwesomeIcon icon="envelope" size='2x' color="white"></FontAwesomeIcon></a></span>
-          <span className='icon'><a href="https://github.com/strtw" target="blank"><FontAwesomeIcon icon={['fab','github']} size="2x" color="white"></FontAwesomeIcon></a></span>
-          <span className='icon'><a href="https://www.linkedin.com/in/stu-wood/" target="blank"><FontAwesomeIcon icon={['fab','linkedin']} size="2x" color="white"></FontAwesomeIcon></a></span>
-          <span className='icon'><a href="https://twitter.com/Stuart_Wood" target="blank"><FontAwesomeIcon icon={['fab','twitter']}size="2x" color="white"></FontAwesomeIcon></a></span>
+          <span className='icon'><a href="mailto:hello@stu-wood.com" aria-label="Email"><FontAwesomeIcon icon="envelope" size='2x' color="white"></FontAwesomeIcon></a></span>
+          <span className='icon'><a href="https://github.com/strtw" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={['fab','github']} size="2x" color="white"></FontAwesomeIcon></a></span>
+          <span className='icon'><a href="https://www.linkedin.com/in/stu-wood/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={['fab','linkedin']} size="2x" color="white"></FontAwesomeIcon></a></span>
+          <span className='icon'><a href="https://twitter.com/Stuart_Wood" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FontAwesomeIcon icon={['fab','twitter']}size="2x" color="white"></FontAwesomeIcon></a></span>
         </div>
         <div className="cover">
         <StyledBackgroundSection/>
@@ -137,7 +125,7 @@ matchSearchToIndex = (results) =>{
               <h1 className='main-title'>Stuart Wood</h1>
               <h2>Front-end Engineer</h2>
               <div className="profile-pic-container">
-                 <img className="profile-pic" src={require('../images/stu-profile.png')}></img>
+                 <img className="profile-pic" src={require('../images/stu-profile.png')} alt="Stuart Wood" />
               </div>
              
             </header>
@@ -146,7 +134,7 @@ matchSearchToIndex = (results) =>{
           <h1>About</h1>
               <p>I'm a San Diego, CA based front-end engineer who has been designing & developing professionally since 2016. I have a further 10+ years experience in digital marketing, technical client services, sales and business development. I excel in cross-functional environments where communication, continuous learning, taking initiative, and transparency are valued. </p>
               <p>Feel free to contact me regarding opportunities, career advice, or just to connect.</p>
-              <p><a href="https://photos.app.goo.gl/xYUR2Q1pQcVMKPYH8" target="blank">To get a feel for me on personal level, here's a photo of me in a cow costume</a> I also enjoy international travel, surfing, gardening, cooking, and trying out new restaurants/breweries.</p>
+              <p><a href="https://photos.app.goo.gl/xYUR2Q1pQcVMKPYH8" target="_blank" rel="noopener noreferrer">To get a feel for me on personal level, here's a photo of me in a cow costume</a> I also enjoy international travel, surfing, gardening, cooking, and trying out new restaurants/breweries.</p>
         </div>
        
 

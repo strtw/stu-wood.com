@@ -18,8 +18,8 @@ const BackgroundSection = ({ className }) => (
       }
     `}
     render={data => {
-      // Set ImageData.
-      const imageData = data.desktop.childImageSharp.fluid
+      // Set ImageData (for when BackgroundImage is uncommented).
+      const _imageData = data.desktop.childImageSharp.fluid
       return (
         // <BackgroundImage
         //   Tag="section"
