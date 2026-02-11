@@ -10,12 +10,42 @@ const summaryData = {data:[
     featured:false
   },
   {
+    id: 20,
+    title: "ES6 Shopping Cart",
+    summary: "This project was an exercise in building a SPA shopping and cart experience purely in Vanilla ES6 without any state management libraries.",
+    demo: 'https://strtw.github.io/ES6-Shopping-Page/dist/index.html',
+    repository: 'https://github.com/strtw/ES6-Shopping-Page',
+    tags: ['ES6', 'Vanilla JS', 'SPA', 'Webpack', 'SASS'],
+    category: 'personal project',
+    featured: false
+  },
+  {
+    id: 21,
+    title: "Illumina TSO 500 Selector Angular App",
+    summary: "Planned, design, developed, and launched product selection app in collaboration with business & design stakeholders to drive customer growth",
+    demo: 'https://www.illumina.com/products/selection-tools/tso-500-selector.html',
+    tags: ['Product', 'Selection Tool', 'Stakeholder Collaboration'],
+    category: 'public professional project',
+    featured: false
+  },
+  {
+    id: 22,
+    title: "Archaea AI Product Demo",
+    summary: "Leverage AI tools (Cursor, Claude) to create demo application which mapped to product roadmap use cases. Created & narrated product demonstration videos to help secure funding from venture capital firms. Collaborated with CEO and CTO to develop key product features, and integrate positioning into marketing website.",
+    demo: 'https://www.archaeaai.com/',
+    tags: ['AI', 'Product Demo', 'Venture', 'Marketing'],
+    category: 'public professional project',
+    icon: 'ai',
+    featured: false
+  },
+  {
       id: 0,
       title: "This Portfolio | React",
-      summary: "Written in React. Built with Gatsby, deployed with Netlify",
+      summary: "Written in React. Built with Gatsby, deployed with Netlify. Cursor AI assisted in 2026",
       repository:'https://bitbucket.org/strtw/portpholio/src/gatsby/portfolio-gt/',
       tags:['React','Search'],
-      category: 'project',
+      category: 'personal project',
+      icon: 'ai',
       featured:true
     },
     {
@@ -25,7 +55,7 @@ const summaryData = {data:[
       demo:'http://kanban-react.surge.sh',
       repository:'https://github.com/strtw/kanban',
       tags:['React','drag and drop','UI'],
-      category: 'project',
+      category: 'personal project',
       featured:true
     },
     {
@@ -35,7 +65,7 @@ const summaryData = {data:[
       demo:'http://incidents.surge.sh/',
       repository:'github.com/strtw/incident-dashboard/',
       tags:['React','Responsive','UI'],
-      category: 'project',
+      category: 'personal project',
       featured:true
     },
     {
@@ -45,7 +75,7 @@ const summaryData = {data:[
       repository:'https://github.com/marcoscannabrava/free-covid-consultation-calendar/',
       presentation:'https://devpost.com/software/careconsult-xbvp3u',
       tags:['React','Gatsby'],
-      category: 'project',
+      category: 'personal project',
       featured:true
     },
     {
@@ -55,7 +85,7 @@ const summaryData = {data:[
       demo:'http://dashboardm.surge.sh/',
       repository:'https://github.com/strtw/dashboard',
       tags:['Data Viz','React','Responsive'],
-      category: 'project',
+      category: 'personal project',
       embed:'<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTp_DVyPAzO0Y6e9qGpYBlQxZc8hktadwY2_5D9hCH14IOyekXlb9y-gma5fohTv_1X7nBiBM0oJPX1/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>',
       presentation:'https://docs.google.com/presentation/d/e/2PACX-1vTp_DVyPAzO0Y6e9qGpYBlQxZc8hktadwY2_5D9hCH14IOyekXlb9y-gma5fohTv_1X7nBiBM0oJPX1/pub?start=false&loop=false&delayms=3000',
       featured:true

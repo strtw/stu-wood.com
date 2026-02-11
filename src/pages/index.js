@@ -13,14 +13,14 @@ import TextSummary from '../components/TextSummary.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faWandMagicSparkles } from '@fortawesome/free-solid-svg-icons';
 import StyledBackgroundSection from '../components/BackGroundImage';
 import SEO from "../components/SEO";
 
 config.autoAddCss = false;
-library.add(fab, faEnvelope);
+library.add(fab, faEnvelope, faWandMagicSparkles);
 
-const CATEGORIES = ['all', 'project', 'student project', 'student exercise', 'open source'];
+const CATEGORIES = ['all', 'public professional project', 'personal project', 'student project', 'student exercise', 'open source'];
 
 class App extends Component{
 
@@ -69,6 +69,7 @@ class App extends Component{
         presentation={project.presentation}
         demo={project.demo}
         tags={project.tags}
+        icon={project.icon}
       />
     ))
     
@@ -83,7 +84,7 @@ class App extends Component{
       >
         <SEO></SEO>
          <div className="social-icons">
-          <span className='icon'><a href="mailto:hello@stu-wood.com" aria-label="Email"><FontAwesomeIcon icon="envelope" size='2x' color="white" /></a></span>
+          <span className='icon'><a href="mailto:stu.wood02@gmail.com" aria-label="Email"><FontAwesomeIcon icon="envelope" size='2x' color="white" /></a></span>
           <span className='icon'><a href="https://github.com/strtw" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><FontAwesomeIcon icon={['fab','github']} size="2x" color="white" /></a></span>
           <span className='icon'><a href="https://www.linkedin.com/in/stu-wood/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FontAwesomeIcon icon={['fab','linkedin']} size="2x" color="white" /></a></span>
           <span className='icon'><a href="https://twitter.com/Stuart_Wood" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><FontAwesomeIcon icon={['fab','twitter']} size="2x" color="white" /></a></span>
@@ -101,9 +102,10 @@ class App extends Component{
         </div>
         <div className="about">
           <h1>About</h1>
-              <p>I'm a San Diego, CA based front-end engineer who has been designing & developing professionally since 2016. Additionally, I have a combined 10+ years experience in digital marketing, technical client services, sales and business development. I excel in cross-functional environments where communication, continuous learning, taking initiative, and transparency are valued. I’m passionate about using data to drive decisions and create better user experiences. I believe great software is built through small, iterative design cycles that enable rapid customer feedback. Empathy is at the heart of my work—I strive to bring a human touch to engineering and collaborate with low-ego teams that value connection, agility, and meaningful impact.
-
-I’ve gravitated toward health and platform companies because they align with my belief in building scalable, user-centered solutions that empower people. But more than any specific industry, I’m driven by the spirit of thoughtful design, servant leadership, and human connection in software development. I bring that mindset to everything I do, regardless of the space. </p>
+              <p>I'm a San Diego, CA based front-end engineer who has been designing & developing professionally since 2016. Additionally, I have a combined 10+ years experience in digital marketing, technical client services, sales and business development. I excel in cross-functional environments where communication, continuous learning, taking initiative, and transparency are valued. I’m passionate about using data to drive decisions and create better user experiences. </p>
+                <p> I believe great software experiences are built through small, iterative design cycles that enable rapid customer feedback. Empathy is at the heart of my work—I strive to bring a human touch to engineering and collaborate with low-ego teams that value connection, agility, and meaningful impact.
+                </p>
+                <p>I’ve gravitated toward health and platform companies because they align with my belief in building scalable, user-centered solutions that empower people. But more than any specific industry, I’m driven by the spirit of thoughtful design, servant leadership, and human connection in software development. I bring that mindset to everything I do, regardless of the space. </p>
               <p> In my free time I enjoy international travel, surfing, gardening, cooking, and trying out new restaurants.</p>
               <p>Feel free to contact me regarding opportunities, career advice, or just to connect.</p>
 
@@ -115,8 +117,8 @@ I’ve gravitated toward health and platform companies because they align with m
       </Button>*/}
      {/*} <CodePenCard height={data.height} width={data.width} title={data.titles} src={data.penUrl}/>*/}
         <div className='projects'>
-          <h1>Code Samples</h1>
-          <p>A selection of projects I've worked on.</p>
+          <h1>Code Samples & Projects</h1>
+          <p>AI Assisted Projects are denoted with an AI icon</p>
           <div className="category-filter" role="group" aria-label="Filter by category">
             {CATEGORIES.map(cat => (
               <button

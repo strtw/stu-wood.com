@@ -1,4 +1,5 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function TextSummary(props){
         const tags = props.tags.map((tag,index) => {
@@ -8,7 +9,14 @@ function TextSummary(props){
         })
         return(
             <div className="project" style={{display:props.display}}>
-                <h2 className='project_title'>{props.title}</h2>
+                <h2 className='project_title'>
+                    {props.title}
+                    {props.icon === 'ai' && (
+                        <span className="project_icon" title="AI-assisted">
+                            <FontAwesomeIcon icon={['fas', 'wand-magic-sparkles']} />
+                        </span>
+                    )}
+                </h2>
                 <p className='project_summary'>{props.summary}</p>
                 <div className='project_links'>
                     <a className='project_presentation' style={{display: props.presentation ? 'inline-block':'none'}} href={props.presentation} target="_blank" rel="noopener noreferrer">Presentation</a>
