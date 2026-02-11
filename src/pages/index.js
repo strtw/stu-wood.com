@@ -10,108 +10,77 @@ import { config } from "@fortawesome/fontawesome-svg-core";
 import '../styles/global.css';
 import summaryData from '../summaryData'
 import TextSummary from '../components/TextSummary.js';
-import Searchbar from '../components/SearchBar.js';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import StyledBackgroundSection from '../components/BackGroundImage';
 import SEO from "../components/SEO";
-import elasticlunr from '../elasticlunr.js';
 
 config.autoAddCss = false;
 library.add(fab, faEnvelope);
+
+const CATEGORIES = ['all', 'project', 'student project', 'student exercise', 'open source'];
 
 class App extends Component{
 
   constructor(props){
     super(props)
-    this.updateApp = this.updateApp.bind(this);
     this.state = {
-      summaryData:summaryData,
-      searchQuery:""
+      summaryData: summaryData,
+      categoryFilter: 'all',
     };
+    this.appRef = React.createRef();
+    this.pageMinHeight = null;
   }
 
-  getSearchQueryP = (childQueryData) => {
-    this.setState({searchQuery:childQueryData})
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.categoryFilter === 'all' && this.appRef.current) {
+      this.pageMinHeight = this.appRef.current.scrollHeight;
+    }
   }
 
-searchResultsObj = (index,query) => {
-  let result = index.search(query);
-  return result;
-}
-
-
-loadProjectToSearchIndex = (data) =>{
-    var index = elasticlunr(function () {
-      this.addField('title');
-      this.addField('summary');
-      this.addField('tags');
-      this.setRef('id');
+  setCategoryFilter = (e, category) => {
+    e.preventDefault();
+    const scrollY = window.scrollY;
+    if (this.state.categoryFilter === 'all' && this.appRef.current) {
+      this.pageMinHeight = this.appRef.current.scrollHeight;
+    }
+    this.setState({ categoryFilter: category }, () => {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
     });
-    data.forEach(function(project){
-      index.addDoc(project)
-    })
-    return index;
-}
-
-matchSearchToIndex = (results) =>{
-  
-  let arrayOfIDs = [];
-  
- results.forEach(function(project){
-   let id = project.ref;
-   arrayOfIDs.push(id);
-  })
-
-  return arrayOfIDs;
-}
-
-
-  updateApp = ()=>{
-    if (typeof window !== `undefined`) {
-      let searchIndex = this.loadProjectToSearchIndex(summaryData.data);
-      let searchResults = this.searchResultsObj(searchIndex, this.state.searchQuery);
-      console.log(searchResults);
-      let matchedProjectIDS = this.matchSearchToIndex(searchResults,this.state.summaryData.data);
-     
-       return matchedProjectIDS;
-    }
-  
-    }
-
+  }
 
   render(){
-    console.log(this.state.summaryData);
-    let projectMatch = false;
-    let matchedProjectIDS = this.updateApp();
-    let summaryComponents = this.state.summaryData.data.map(project=> {
-    if(this.state.searchQuery !== "" && matchedProjectIDS){
-      for(let id of matchedProjectIDS){
-        if(id === project.id){
-          projectMatch = true;
-          break;
-         }else{
-        projectMatch  = false;
-        }
-      } 
-    }else{
-      if(project.featured === true){
-        projectMatch = true;
-      }else{
-        projectMatch = false;
-      }
-    }
-      
-      return (
-        <TextSummary display={projectMatch ? 'block' : 'none'} key={project.id} title={project.title} summary={project.summary} repository={project.repository} presentation={project.presentation} demo={project.demo} tags={project.tags}/>
-      )
-    })
+    const { categoryFilter } = this.state;
+    const projects = this.state.summaryData.data.filter(project => {
+      if (categoryFilter === 'all') return true;
+      return (project.category || '').toLowerCase() === categoryFilter.toLowerCase();
+    });
+    const summaryComponents = projects.map(project => (
+      <TextSummary
+        display="block"
+        key={project.id}
+        title={project.title}
+        summary={project.summary}
+        repository={project.repository}
+        presentation={project.presentation}
+        demo={project.demo}
+        tags={project.tags}
+      />
+    ))
     
 
     return (
-      <div className="App">
+      <div
+        className="App"
+        ref={this.appRef}
+        style={this.state.categoryFilter !== 'all' && this.pageMinHeight
+          ? { minHeight: this.pageMinHeight }
+          : undefined}
+      >
         <SEO></SEO>
          <div className="social-icons">
           <span className='icon'><a href="mailto:hello@stu-wood.com" aria-label="Email"><FontAwesomeIcon icon="envelope" size='2x' color="white" /></a></span>
@@ -123,18 +92,21 @@ matchSearchToIndex = (results) =>{
         <StyledBackgroundSection/>
             <header>
               <h1 className='main-title'>Stuart Wood</h1>
-              <h2>Front-end Engineer</h2>
+              <h2>Human Centered Web Engineer</h2>
               <div className="profile-pic-container">
-                 <img className="profile-pic" src={require('../images/stu-profile.png')} alt="Stuart Wood" />
+                 <img className="profile-pic" src="/stu-profile.png" alt="Stuart Wood" />
               </div>
              
             </header>
         </div>
         <div className="about">
           <h1>About</h1>
-              <p>I'm a San Diego, CA based front-end engineer who has been designing & developing professionally since 2016. I have a further 10+ years experience in digital marketing, technical client services, sales and business development. I excel in cross-functional environments where communication, continuous learning, taking initiative, and transparency are valued. </p>
+              <p>I'm a San Diego, CA based front-end engineer who has been designing & developing professionally since 2016. Additionally, I have a combined 10+ years experience in digital marketing, technical client services, sales and business development. I excel in cross-functional environments where communication, continuous learning, taking initiative, and transparency are valued. I’m passionate about using data to drive decisions and create better user experiences. I believe great software is built through small, iterative design cycles that enable rapid customer feedback. Empathy is at the heart of my work—I strive to bring a human touch to engineering and collaborate with low-ego teams that value connection, agility, and meaningful impact.
+
+I’ve gravitated toward health and platform companies because they align with my belief in building scalable, user-centered solutions that empower people. But more than any specific industry, I’m driven by the spirit of thoughtful design, servant leadership, and human connection in software development. I bring that mindset to everything I do, regardless of the space. </p>
+              <p> In my free time I enjoy international travel, surfing, gardening, cooking, and trying out new restaurants.</p>
               <p>Feel free to contact me regarding opportunities, career advice, or just to connect.</p>
-              <p><a href="https://photos.app.goo.gl/xYUR2Q1pQcVMKPYH8" target="_blank" rel="noopener noreferrer">To get a feel for me on personal level, here's a photo of me in a cow costume</a> I also enjoy international travel, surfing, gardening, cooking, and trying out new restaurants/breweries.</p>
+
         </div>
        
 
@@ -143,9 +115,20 @@ matchSearchToIndex = (results) =>{
       </Button>*/}
      {/*} <CodePenCard height={data.height} width={data.width} title={data.titles} src={data.penUrl}/>*/}
         <div className='projects'>
-          <h1>Work Samples</h1>
-          <p>Below are some featured projects, with the option to search a larger catalog of samples</p>
-          <Searchbar getSearchQuery={this.getSearchQueryP}></Searchbar>
+          <h1>Code Samples</h1>
+          <p>A selection of projects I've worked on.</p>
+          <div className="category-filter" role="group" aria-label="Filter by category">
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat}
+                type="button"
+                className={`filter-btn ${categoryFilter === cat ? 'filter-btn-active' : ''}`}
+                onClick={(e) => this.setCategoryFilter(e, cat)}
+              >
+                {cat === 'all' ? 'All' : cat}
+              </button>
+            ))}
+          </div>
           <div className="project_container">
               {summaryComponents} 
           </div>

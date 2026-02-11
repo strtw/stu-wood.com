@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useLocation } from "@reach/router"
-import { StaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql } from "gatsby"
 
 const DEFAULT_METADATA = {
   defaultTitle: "Stu Wood - Front-end Engineer | San Diego, CA",
@@ -14,9 +14,23 @@ const DEFAULT_METADATA = {
   twitterUsername: "@stuart_wood",
 }
 
-const SEOInner = ({ title, description, image, article, siteMetadata }) => {
+const SEO = ({ title, description, image, article }) => {
   const { pathname } = useLocation()
-  const metadata = siteMetadata || DEFAULT_METADATA
+  const data = useStaticQuery(graphql`
+    query StuWoodSEOMetadata {
+      site {
+        siteMetadata {
+          defaultTitle: title
+          titleTemplate
+          defaultDescription: description
+          siteUrl
+          defaultImage: image
+          twitterUsername
+        }
+      }
+    }
+  `)
+  const metadata = data?.site?.siteMetadata || DEFAULT_METADATA
 
   const {
     defaultTitle,
@@ -67,31 +81,6 @@ const SEOInner = ({ title, description, image, article, siteMetadata }) => {
     </Helmet>
   )
 }
-
-const SEO = (props) => (
-  <StaticQuery
-    query={graphql`
-      query StuWoodSEOMetadata {
-        site {
-          siteMetadata {
-            defaultTitle: title
-            titleTemplate
-            defaultDescription: description
-            siteUrl
-            defaultImage: image
-            twitterUsername
-          }
-        }
-      }
-    `}
-    render={(data) => (
-      <SEOInner
-        {...props}
-        siteMetadata={data?.site?.siteMetadata}
-      />
-    )}
-  />
-)
 
 export default SEO
 

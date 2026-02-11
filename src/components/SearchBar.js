@@ -13,15 +13,17 @@ class SearchBar extends Component {
     }
 
     handleKeyPress(e){
-            this.setState({inputValue:e.currentTarget.value});
-            if(e.keyCode === 13){
-                this.sendQuery();
-              }
+            this.setState({inputValue: e.currentTarget.value});
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.sendQuery(e.currentTarget.value);
+            }
     }
 
 
-    sendQuery = () =>{
-        this.props.getSearchQuery(this.state.inputValue);
+    sendQuery = (value) =>{
+        const query = value !== undefined ? value : this.state.inputValue;
+        this.props.getSearchQuery(query);
     }
    
     render(){

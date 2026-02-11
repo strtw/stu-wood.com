@@ -5,8 +5,8 @@ import styled from 'styled-components'
 const StyledBackgroundSection = styled.div`
   background-color: #040e18;
   background-image: linear-gradient(
-      rgba(0, 0, 0, 0.45),
-      rgba(0, 0, 0, 0.45)
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
     ),
     url('/sunset-cliffs-d2.jpg');
   background-position: center;

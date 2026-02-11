@@ -6,14 +6,16 @@ const summaryData = {data:[
     summary: "List of open-source contributions",
     demo:'https://codepen.io/stw/pen/xxKPpmY',
     tags:['Open-source','documentation','gulp','sass','scss'],
+    category: 'open source',
     featured:false
   },
   {
       id: 0,
       title: "This Portfolio | React",
-      summary: "Written in React, uses Elasticlunr.js for search. Built with Gatsby, deployed with Netlify",
+      summary: "Written in React. Built with Gatsby, deployed with Netlify",
       repository:'https://bitbucket.org/strtw/portpholio/src/gatsby/portfolio-gt/',
       tags:['React','Search'],
+      category: 'project',
       featured:true
     },
     {
@@ -23,6 +25,7 @@ const summaryData = {data:[
       demo:'http://kanban-react.surge.sh',
       repository:'https://github.com/strtw/kanban',
       tags:['React','drag and drop','UI'],
+      category: 'project',
       featured:true
     },
     {
@@ -32,6 +35,7 @@ const summaryData = {data:[
       demo:'http://incidents.surge.sh/',
       repository:'github.com/strtw/incident-dashboard/',
       tags:['React','Responsive','UI'],
+      category: 'project',
       featured:true
     },
     {
@@ -41,6 +45,7 @@ const summaryData = {data:[
       repository:'https://github.com/marcoscannabrava/free-covid-consultation-calendar/',
       presentation:'https://devpost.com/software/careconsult-xbvp3u',
       tags:['React','Gatsby'],
+      category: 'project',
       featured:true
     },
     {
@@ -50,6 +55,7 @@ const summaryData = {data:[
       demo:'http://dashboardm.surge.sh/',
       repository:'https://github.com/strtw/dashboard',
       tags:['Data Viz','React','Responsive'],
+      category: 'project',
       embed:'<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vTp_DVyPAzO0Y6e9qGpYBlQxZc8hktadwY2_5D9hCH14IOyekXlb9y-gma5fohTv_1X7nBiBM0oJPX1/embed?start=false&loop=false&delayms=3000" frameborder="0" width="480" height="299" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>',
       presentation:'https://docs.google.com/presentation/d/e/2PACX-1vTp_DVyPAzO0Y6e9qGpYBlQxZc8hktadwY2_5D9hCH14IOyekXlb9y-gma5fohTv_1X7nBiBM0oJPX1/pub?start=false&loop=false&delayms=3000',
       featured:true
@@ -60,6 +66,7 @@ const summaryData = {data:[
       summary: "Exercise in using React.createElement",
       demo:'https://codepen.io/stw/pen/PKrWQg',
       tags:['React','JSX','Functional Component'],
+      category: 'student exercise',
       featured:false
     },
     {
@@ -69,6 +76,7 @@ const summaryData = {data:[
       demo:'https://strtw.github.io/md-hackathon-team-1/',
       repository:'https://github.com/strtw/md-hackathon-team-1', 
       tags:['JavaScript','CSS','SCSS','HTML','UI'],
+      category: 'student project',
       featured:true
     },
     {
@@ -78,6 +86,7 @@ const summaryData = {data:[
       demo:'http://stuwoodpuzzle.surge.sh/',
       repository:'https://github.com/strtw/puzzle',
       tags:['UI','HTML','CSS','Mock-up','Game','Drag and Drop'],
+      category: 'student project',
       featured:true
     },
     {
@@ -86,6 +95,7 @@ const summaryData = {data:[
       summary: "A collection of notes I compiled while learning JS. Includes topics like closures, callbacks, IIFEs, scope etc.",
       repository:'https://github.com/strtw/JavaScript-Study-Guides',
       tags:['JavaScript','OOP','Closures', 'callbacks','events'],
+      category: 'student exercise',
       featured:false
     },
     {
@@ -95,6 +105,7 @@ const summaryData = {data:[
       demo:'https://evolution-ui.github.io/evolution-ui/#site-section-evolution-21',
       repository:'https://github.com/strtw/evolution-ui/tree/master/source/components/evolution/search-with-long-edit',
       tags:['UI','HTML','SCSS','JavaScript','UI Component','Open Source'],
+      category: 'student project',
       featured:true
     },
     {
@@ -104,6 +115,7 @@ const summaryData = {data:[
       demo:'https://evolution-ui.github.io/evolution-ui/#site-section-evolution-15',
       repository:'https://github.com/strtw/evolution-ui/tree/master/source/components/evolution/minimalist-carousel-two',
       tags:['UI','HTML','SCSS','JavaScript','UI Component','Open Source','Transitions'],
+      category: 'student project',
       featured:true
     },
     {
@@ -112,6 +124,7 @@ const summaryData = {data:[
       summary: "Since coding this the Free Music Archive revoked API access to its service so the demo is broken. Project was created to fetch album data and display albums to the page using indexedDB for storage, Handlebars.js for templating, and XMLHttpRequest API for AJAX",
       repository:'https://github.com/strtw/music_catalog',
       tags:['API','AJAX','Templating','JavaScript','indexedDB'],
+      category: 'student project',
       featured:false
     },
     {
@@ -120,6 +133,7 @@ const summaryData = {data:[
       summary: "Exercise in creating an accordion that only uses HTML / CSS",
       demo:'https://codepen.io/stw/pen/GNoVqV',
       tags:['CSS','UI'],
+      category: 'student project',
       featured:false
     },
     {
@@ -128,6 +142,7 @@ const summaryData = {data:[
       summary: "Demonstrates ability to take static design files and convert to code",
       demo:'http://btmbtm.github.io/MD-Encyclopedia-Profiles/',
       tags:['UI','HTML','CSS','Mock-up'],
+      category: 'student project',
       featured:false
     },
     {
@@ -136,6 +151,7 @@ const summaryData = {data:[
       summary: "Exercise in using haschange event listener to make partial page updates",
       demo:'https://codepen.io/stw/pen/dWzZBL',
       tags:['Events','Partial Page Updates', 'static'],
+      category: 'student exercise',
       featured:false
     },
     {
@@ -145,6 +161,7 @@ const summaryData = {data:[
       repository:'https://bitbucket.org/strtw/dom_only_form_validation/src/master/',
       demo:'http://dom-form.surge.sh/',
       tags:['DOM','Partial Page Updates', 'JSON','Document Fragment','Module'],
+      category: 'student project',
       featured:true
     },
     {
@@ -154,6 +171,7 @@ const summaryData = {data:[
       repository:'https://github.com/strtw/personal_site',
       demo:'http://stuwood.surge.sh/dest/html/index.html',
       tags:['DOM','BEM','gulp','sass','scss'],
+      category: 'student project',
       featured:true
     }
    
