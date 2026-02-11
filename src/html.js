@@ -20,6 +20,7 @@ export default function HTML(props) {
            __html: elasticLunr,
           }}/>
           <link rel="shortcut icon" href="https://www.stu-wood.com/favicon.ico?v=1"/>
+        <link rel="preload" as="image" href="/sunset-cliffs-d2.jpg" />
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
